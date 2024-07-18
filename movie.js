@@ -1,15 +1,29 @@
 class Movie{
-    constructor(title, studio, rating){
-        this.title=title;
-        this.studio=studio;
-        this.rating=rating;
-    }
+    constructor(title, studio, rating = "PG"){
+        this.title = title;
+        this.studio = studio;
+        this.rating = rating;
 
-    getPG(){
-        if(this.rating=="PG"){
-        return`${this.title},${this.studio},${this.rating}`;
+        // console.log(this.rating);
+    }
+    getPG(movies){
+        let pgMovies = [];
+
+        for(let i=0;i < movies.length;i++){
+            if(movies[i].rating == "PG"){
+                pgMovies.push(movies[i]);
+            }
+        }
+        return pgMovies;
     }
 }
-}
-var c1= new Movie("Casino Royale","Eon Productions","PG");
-console.log(c1.getPG());
+
+let film = new Movie();
+let movies = [
+    new Movie("Casino Royale", "Eon Productions", "PG-13"),
+    new Movie("Movie1", "Studio1", "PG"),
+    new Movie("Movie2", "Studio2", "PG-13"),
+    new Movie("Movie3", "Studio3",)
+  ];
+let pgM= film.getPG(movies);
+console.log(pgM);
